@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .text-center {
+            text-align: center;
+        }
+
+        #header {
+            position: running(header);
+        }
+
+        #footer {
+            position: running(footer);
+        }
+
+        @page {
+            @top-left {
+                content: element(header) ;
+            }
+            @bottom-center {
+                content: element(footer);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="header">
+    <p style="color: green">I am header</p>
+</div>
+<div id="footer">
+    <p style="color: blue">I am footer</p>
+</div>
+
+<h1>Hello world</h1>
+<h4 class="text-center">This page is result of test 5</h4>
+<p>
+    This <strong>word</strong> is strong
+</p>
+<p>
+    The header and footer must be placed at the top of the body
+</p>
+<div style="height: 10000px">
+
+</div>
+</body>
+</html>

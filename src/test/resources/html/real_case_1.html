@@ -1,0 +1,176 @@
+<html>
+<head>
+
+    <style>
+        html {
+            font-family: "Helvetica";
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .bold {
+            font-weight: bold
+        }
+
+        .border-solid {
+            border: 1px solid #333333;
+            border-collapse: collapse;
+            padding: 1%;
+        }
+
+        .border-solid td {
+            border-left: 1px solid #333;
+            border-right: 1px solid #333;
+            border-collapse: collapse;
+            padding: 1%;
+        }
+
+        .border-solid th {
+            border: 1px solid #333333;
+            border-collapse: collapse;
+            padding: 1%;
+            background: #abaaaa;
+        }
+
+        #footer {
+            position: running(footer);
+        }
+
+        @page {
+            @bottom-left {
+                content: element(footer);
+                margin-top: -100px;
+            }
+        }
+
+
+    </style>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id="footer" style="color: #409b7a; height: 600px">
+    <hr>
+    COMPANY NAME <br>
+    Siège social: 1 route anywhere - 75000 Paris <br>
+    N°TVA intracommunautaire : FRXXXXXXXXXX <br>
+    N°Siret : XXXXXXXXXXXXXXX<br>
+    01.00.00.00.00<br/>
+    <a href="https://website.com" style="color: #40609b">www.website.com</a>
+</div>
+<div>
+    <table style="margin-top: 5%" class="w-100">
+        <tr>
+            <td style="width: 50%;">
+                <table>
+                    <tr>
+                        <th style="text-align: left; white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">
+                            Métier
+                        </th>
+                        <td style="text-align: right; white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">
+                            Serrurerie
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <div>
+                    <table style="text-transform: uppercase">
+                        <tr>
+                            <td style="padding-bottom: 5%" class="bold">Client name</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1 route of developer<br>
+                                CEDEX The best <br>
+                                75000 Paris
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Siret : 111111111111111</td>
+                        </tr>
+                        <tr>
+                            <td>0100000000</td>
+                        </tr>
+                        <tr>
+                            <td>client@email.com</td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div style="margin-top: 30px">
+    <table class="border-solid w-100" style="text-align: center;">
+        <tr>
+            <th>Date</th>
+            <th>Ordre de mission</th>
+        </tr>
+        <tr>
+            <td>01/01/1970</td>
+            <td>1</td>
+        </tr>
+    </table>
+</div>
+<div style="margin-top: 60px">
+    <table style="text-align: center; border-collapse: collapse" class="w-100">
+        <thead class="border-solid">
+        <tr>
+            <th style="text-align: left">Description</th>
+
+            <th>Qté</th>
+            <th style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">PU HT</th>
+            <th>TVA</th>
+            <th style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">Total HT</th>
+            <th style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">Total TTC</th>
+        </tr>
+        </thead>
+        <tbody class="border-solid">
+        <tr>
+            <td style="text-align: left; max-width: 250px">First part</td>
+            <td style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">1,00</td>
+            <td style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">100,00 €</td>
+            <td style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">10,00 %</td>
+            <td style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">100,00 €</td>
+            <td style=" white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">110,00 €</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="4" rowspan="3" style="border: none; text-align: left;">
+                <br/>
+                <span style="text-decoration: underline;" class="bold"> Condition de réglement :</span> <br>
+                Le 01/01/1970 par chèque ou virement à l'ordre de <span class="bold">COMPANY NAME</span> <br> <br>
+                <span class="bold">
+                    RIB : XXXXX - XXXXX - XXXXXXXXXXXXXXX - XX <br>
+                    IBAN : FR76 XXXX XXXX XXXX XXXX XXXX XXXX
+                </span>
+            </td>
+            <th class="border-solid" style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">TOTAL HT
+            </th>
+            <td class="border-solid">100,00 €</td>
+        </tr>
+        <tr>
+            <th class="border-solid">TVA</th>
+            <td class="border-solid">10,00 €</td>
+        </tr>
+        <tr>
+            <th class="border-solid" style="white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">TOTAL TTC
+            </th>
+            <td class="border-solid">110,00 €</td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+<div style="margin-top: 20px">
+    Aucun escompte n'est accordé en cas de paiement avant l'échéance. Tout retard de paiement entraînera l'application
+    de pénalités calculées sur la base de trois fois le taux d'intérêt légal. Article L.441-6 du Code de commerce.
+    En outre, tout retard de paiement entraînera l'application d'une indemnité forfaitaire pour frais de recouvrement
+    de 40 Euros. Décret N° 2012 - 1115 du 02/10/2012.
+</div>
+
+</body>
+</html>
