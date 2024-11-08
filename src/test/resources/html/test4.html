@@ -6,17 +6,23 @@
             text-align: center;
         }
 
-        @page {
-            @top-left {
-                content: "This is header" ;
+        @media print {
+            div.divHeader {
+                position: fixed;
+                top: 0;
             }
-            @bottom-left {
-                content: "This is footer";
+
+            div.divFooter {
+                position: fixed;
+                bottom: 0;
             }
         }
     </style>
 </head>
 <body>
+<div class="divHeader">
+    <p style="color: green">I am header</p>
+</div>
 <h1>Hello world</h1>
 <h4 class="text-center">This page is result of test 4</h4>
 <p>
@@ -24,6 +30,10 @@
 </p>
 <div style="height: 10000px">
 
+</div>
+
+<div class="divFooter">
+    <p style="color: green">I am footer</p>
 </div>
 </body>
 </html>
