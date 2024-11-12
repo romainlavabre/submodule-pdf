@@ -28,7 +28,6 @@ public abstract class PdfBuilderImpl implements PdfBuilder {
     }
 
 
-
     // @todo check if command isBlank, log error
     @Override
     public File build( String html, String footer, String header ) {
