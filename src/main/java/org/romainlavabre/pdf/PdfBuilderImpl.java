@@ -11,7 +11,8 @@ import java.util.UUID;
 /**
  * @author Romain Lavabre <romainlavabre98@gmail.com>
  */
-public abstract class AbstractCLIPDFBuilderImpl implements PdfBuilder {
+@Service
+public abstract class PdfBuilderImpl implements PdfBuilder {
 
     protected static String command = "";
 
@@ -63,12 +64,11 @@ public abstract class AbstractCLIPDFBuilderImpl implements PdfBuilder {
         return new File( filename );
     }
 
+    protected void setCommand( String html, String footer, String header ) {
+        final String tmpFile  = PdfConfigurer.get().getPdfTmpDirectory() + "/" + UUID.randomUUID() + ".html";
+        final String filename = PdfConfigurer.get().getPdfTmpDirectory() + "/" + UUID.randomUUID() + ".pdf";
 
-
-
-    private class ChromeCLI {
-
+        this.command = "google-chrome --headless --no-margins --disable-gpu --print-to-pdf=" + filename + " " + tmpFile;
     }
 
-    abstract protected void setCommand(String html, String footer, String header);
 }
