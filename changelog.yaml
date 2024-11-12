@@ -1,2 +1,3 @@
+3.0.0: ADD Switched from wkhtml to chrome headless for HTML to PDF generation
 2.1.0: ADD Footer & Header page
 2.0.0: fairfair-cloud/roadmap#16

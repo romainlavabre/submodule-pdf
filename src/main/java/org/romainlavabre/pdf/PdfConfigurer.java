@@ -3,6 +3,7 @@ package org.romainlavabre.pdf;
 import org.romainlavabre.pdf.exception.NotInitializedException;
 
 public class PdfConfigurer {
+
     private static PdfConfigurer INSTANCE;
     private        String        pdfTmpDirectory;
 
