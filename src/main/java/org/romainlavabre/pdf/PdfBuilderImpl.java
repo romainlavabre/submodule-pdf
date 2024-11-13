@@ -12,27 +12,12 @@ import java.util.UUID;
  * @author Romain Lavabre <romainlavabre98@gmail.com>
  */
 @Service
-public abstract class PdfBuilderImpl implements PdfBuilder {
-
-    protected static String command = "";
+public class PdfBuilderImpl implements PdfBuilder {
 
     @Override
-    public File build( final String html ) {
-        return build( html, null, null );
-    }
+    public File build( String html ) {
 
-
-    @Override
-    public File build( String html, String footer ) {
-        return build( html, footer, null );
-    }
-
-
-    // @todo check if command isBlank, log error
-    @Override
-    public File build( String html, String footer, String header ) {
         final String tmpFile  = PdfConfigurer.get().getPdfTmpDirectory() + "/" + UUID.randomUUID() + ".html";
-        final String filename = PdfConfigurer.get().getPdfTmpDirectory() + "/" + UUID.randomUUID() + ".pdf";
 
         try {
             Files.writeString( Path.of( tmpFile ), html );
@@ -41,12 +26,10 @@ public abstract class PdfBuilderImpl implements PdfBuilder {
             return null;
         }
 
-        final String[] cmdline = {
-                "sh",
-                "-c",
-                command
-        };
-
+        final String filename = PdfConfigurer.get().getPdfTmpDirectory() + "/" + UUID.randomUUID() + ".pdf";
+        String command = "google-chrome --headless --no-pdf-header-footer --disable-gpu --print-to-pdf="
+                + filename + " " + tmpFile;
+        final String[] cmdline = { "sh", "-c", command };
         final Runtime runtime = Runtime.getRuntime();
 
         try {
@@ -63,11 +46,5 @@ public abstract class PdfBuilderImpl implements PdfBuilder {
         return new File( filename );
     }
 
-    protected void setCommand( String html, String footer, String header ) {
-        final String tmpFile  = PdfConfigurer.get().getPdfTmpDirectory() + "/" + UUID.randomUUID() + ".html";
-        final String filename = PdfConfigurer.get().getPdfTmpDirectory() + "/" + UUID.randomUUID() + ".pdf";
-
-        this.command = "google-chrome --headless --no-margins --disable-gpu --print-to-pdf=" + filename + " " + tmpFile;
-    }
 
 }
