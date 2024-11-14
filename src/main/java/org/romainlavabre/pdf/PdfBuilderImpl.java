@@ -19,7 +19,10 @@ public class PdfBuilderImpl implements PdfBuilder {
 
         final String tmpFile  = PdfConfigurer.get().getPdfTmpDirectory() + "/" + UUID.randomUUID() + ".html";
 
-        System.out.println("GENERATING PDF TO " + tmpFile);
+        System.out.println("GENERATING PDF FROM " );
+        System.out.println("=============================================================================================");
+        System.out.println(html);
+        System.out.println("=============================================================================================");
 
         try {
             Files.writeString( Path.of( tmpFile ), html );
