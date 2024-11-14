@@ -29,7 +29,7 @@ public class PdfBuilderImpl implements PdfBuilder {
         }
 
         final String filename = PdfConfigurer.get().getPdfTmpDirectory() + "/" + UUID.randomUUID() + ".pdf";
-        String command = "google-chrome --headless --no-pdf-header-footer --disable-gpu --print-to-pdf="
+        String command = "google-chrome --headless --no-sandbox --no-pdf-header-footer --disable-gpu --print-to-pdf="
                 + filename + " " + tmpFile;
         final String[] cmdline = { "sh", "-c", command };
         final Runtime runtime = Runtime.getRuntime();
