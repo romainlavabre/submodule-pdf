@@ -19,6 +19,8 @@ public class PdfBuilderImpl implements PdfBuilder {
 
         final String tmpFile  = PdfConfigurer.get().getPdfTmpDirectory() + "/" + UUID.randomUUID() + ".html";
 
+        System.out.println("GENERATING PDF TO " + tmpFile);
+
         try {
             Files.writeString( Path.of( tmpFile ), html );
         } catch ( final IOException e ) {
@@ -41,7 +43,10 @@ public class PdfBuilderImpl implements PdfBuilder {
         }
 
         final File tmp = new File( tmpFile );
+        System.out.println("DELETING " + tmpFile);
+
         tmp.delete();
+        System.out.println("RETRUNING " + filename);
 
         return new File( filename );
     }
