@@ -24,7 +24,7 @@
         <dependency>
             <groupId>com.hubspot.chrome</groupId>
             <artifactId>ChromeDevToolsClient</artifactId>
-            <version>94.0.4606.61</version>
+            <version>1.0</version>
         </dependency>
 
         <!-- TEST -->
