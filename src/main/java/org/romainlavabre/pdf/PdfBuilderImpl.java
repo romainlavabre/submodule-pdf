@@ -1,9 +1,12 @@
 package org.romainlavabre.pdf;
 
+import com.hubspot.chrome.devtools.client.ChromeDevToolsClient;
+import com.hubspot.chrome.devtools.client.ChromeDevToolsSession;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.UUID;
@@ -27,23 +30,22 @@ public class PdfBuilderImpl implements PdfBuilder {
         }
 
         final String filename = PdfConfigurer.get().getPdfTmpDirectory() + "/" + UUID.randomUUID() + ".pdf";
-        String command = "google-chrome --headless --no-sandbox --no-pdf-header-footer --disable-gpu --print-to-pdf="
-                + filename + " " + tmpFile + " &";
-        final String[] cmdline = { "sh", "-c", command };
-        final Runtime runtime = Runtime.getRuntime();
 
-        try {
-            final Process process = runtime.exec( cmdline );
-            process.waitFor();
-        } catch ( final IOException | InterruptedException e ) {
-            e.printStackTrace();
-            return null;
+        ChromeDevToolsClient client = ChromeDevToolsClient.defaultClient();
+
+        try ( ChromeDevToolsSession session = client.connect("127.0.0.1", 9292)) {
+            // Control Chrome remotely
+            session.navigate( tmpFile );
+            byte[] pdfContent = session.printToPDF();
+            Files.write( Path.of( filename ), pdfContent);
+        } catch ( URISyntaxException e ) {
+            throw new RuntimeException( e );
+        } catch ( Exception e ) {
+            throw new RuntimeException( e );
         }
 
-        final File tmp = new File( tmpFile );
-
-        tmp.delete();
-
+        client.close();
+        new File( tmpFile ).delete();
         return new File( filename );
     }
 
