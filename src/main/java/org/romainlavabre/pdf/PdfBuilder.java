@@ -1,31 +1,19 @@
 package org.romainlavabre.pdf;
 
-import java.io.File;
+import org.romainlavabre.pdf.exception.PdfGenerationException;
+import org.romainlavabre.pdf.exception.PdfTimeoutException;
 
 /**
  * @author Romain Lavabre <romainlavabre98@gmail.com>
  */
 public interface PdfBuilder {
     /**
+     * Nothing is left on disk nor running once it returns or throws.
+     *
      * @param html Pdf body in html
-     * @return Pdf
+     * @return the content of the PDF
+     * @throws PdfTimeoutException    Chrome ran beyond the timeout and was killed
+     * @throws PdfGenerationException Chrome could not produce the PDF
      */
-    File build( String html );
-
-
-    /**
-     * @param html   Pdf body in html
-     * @param footer Pdf footer in html
-     * @return Pdf
-     */
-    File build( String html, String footer );
-
-
-    /**
-     * @param html   Pdf body in html
-     * @param footer Pdf footer in html
-     * @param header Pdf header in html
-     * @return Pdf
-     */
-    File build( String html, String footer, String header );
+    byte[] build( String html );
 }
